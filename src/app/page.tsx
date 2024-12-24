@@ -2,13 +2,11 @@ import Navbar from "./Navbar";
 
 import HeroSection from "./Header";
 
-import MovieCard from "./MovieCard";
+import MovieCard,{MovieCardProps} from "./MovieCard";
 import Footer from "./Footer";
-type MovieCardProps = {
-  title: string;
-  rating: number;
-  image: string;
-};
+import { imageConfigDefault } from "next/dist/shared/lib/image-config";
+
+
 export const API_KEY = "f39690f9830ce804b7894ac1def4f7e9";
 export default async function Home() {
   const options = {
@@ -25,7 +23,22 @@ export default async function Home() {
     options
   );
   const data = await res.json();
-  const movies: MovieCardProps[] = data.results;
+  type Movie = {
+  title: string;
+  rating: number;
+  image: string;
+  date:number;
+};
+
+  
+  const movies: MovieCardProps[] = data.results.map((movie:any ) => ({
+ title: movie.title,
+ rating: movie.vote_average,
+ image: movie.poster_path, 
+ date:movie.release_date,
+
+}));
+  console.log(data.results)
 
   return (
     <div>
@@ -34,12 +47,13 @@ export default async function Home() {
       <main className="max-w-7xl mx-auto p-4">
         <h2 className="text-2xl font-bold mb-4">Upcoming</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {movies.map((movie, index) => (
+          {movies.map((movie, id) => (
             <MovieCard
-              key={index}
+              key={id}
               title={movie.title}
               image={movie.image}
               rating={movie.rating}
+              date={movie.date}
             />
           ))}
         </div>

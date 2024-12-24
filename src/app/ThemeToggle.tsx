@@ -1,38 +1,48 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaSun, FaMoon } from "react-icons/fa";
+import { FaSun, FaMoon } from "react-icons/fa"; 
+
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState<string | undefined>();
+  const [theme, setTheme] = useState<string>("light");
+
   useEffect(() => {
+
     const storedTheme = localStorage.getItem("theme");
-    const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
+
+  
+    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
     if (storedTheme) {
       setTheme(storedTheme);
-      document.documentElement.classList.toggle("dark", storedTheme === "dark");
+      document.documentElement.classList.toggle("dark", storedTheme === "dark"); 
     } else {
-      setTheme(systemPrefersDark ? "dark" : "light");
+      const initialTheme = systemPrefersDark ? "dark" : "light"; 
+      setTheme(initialTheme);
+      document.documentElement.classList.toggle("dark", initialTheme === "dark");
     }
-  }, []);
+  }, []); 
+
   const toggleTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     setTheme(newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark"); 
+    localStorage.setItem("theme", newTheme); 
   };
+
   return (
     <button
       onClick={toggleTheme}
       className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 transition duration-300"
+      aria-label="Сэдэв шилжүүлэх"
     >
       {theme === "dark" ? (
-        <FaSun className="w-5 h-5" />
+        <FaSun className="w-5 h-5" /> 
       ) : (
-        <FaMoon className="w-5 h-5" />
+        <FaMoon className="w-5 h-5" /> 
       )}
     </button>
   );
 };
+
 export default ThemeToggle;
