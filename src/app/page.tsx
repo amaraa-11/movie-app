@@ -4,10 +4,10 @@ import HeroSection from "./Header";
 
 import MovieCard,{MovieCardProps} from "./MovieCard";
 import Footer from "./Footer";
-import { imageConfigDefault } from "next/dist/shared/lib/image-config";
 
 
 export const API_KEY = "f39690f9830ce804b7894ac1def4f7e9";
+const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 export default async function Home() {
   const options = {
     method: "GET",
@@ -19,6 +19,8 @@ export default async function Home() {
   };
 
   const res = await fetch(
+    
+
     "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
     options
   );
@@ -34,11 +36,14 @@ export default async function Home() {
   const movies: MovieCardProps[] = data.results.map((movie:any ) => ({
  title: movie.title,
  rating: movie.vote_average,
- image: movie.poster_path, 
- date:movie.release_date,
+ image: movie.poster_path ? `${IMAGE_BASE_URL}${movie.poster_path}`: "/godfather.jpg"
+//  date:movie.release_date,
 
 }));
   console.log(data.results)
+  data.results.forEach((movie:any)=>{
+    console.log(movie.poster_path)
+  })
 
   return (
     <div>
