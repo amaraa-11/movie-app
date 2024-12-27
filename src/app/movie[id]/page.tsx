@@ -1,5 +1,3 @@
-"use client";
-
 type Props = {
   params: {
     id: string;
@@ -52,7 +50,7 @@ export default async function MovieDetailsPage({ params }: Props) {
             <strong>Release Date:</strong> {movie.release_date}
           </p>
           <p className="text-lg mb-2">
-            <strong>Rating:</strong> {movie.vote_average} / 10
+            <strong>Rating:</strong> ⭐️ {movie.vote_average} / 10
           </p>
           <p className="text-lg mb-4">
             <strong>Overview:</strong> {movie.overview}

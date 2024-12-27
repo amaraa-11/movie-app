@@ -44,8 +44,9 @@ const fetchMoviesByQuery = async (query: string) => {
   );
   const data = await res.json();
   return data.results.map((movie: any) => ({
-    title: movie.title,
+    id: movie.id,
     rating: movie.vote_average,
+    title: movie.title,
     date: movie.release_date,
     image: movie.poster_path
       ? `${IMAGE_BASE_URL}${movie.poster_path}`
@@ -97,9 +98,9 @@ export default function Home() {
             {isSearchActive ? "Search Results" : "Top Rated Movies"}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {movies.map((movie, id) => (
+            {movies.map((movie, index) => (
               <MovieCard
-                key={id}
+                key={movie.id || index}
                 title={movie.title}
                 image={movie.image}
                 rating={movie.rating}
@@ -112,9 +113,9 @@ export default function Home() {
         <section>
           <h2 className="text-2xl font-bold mt-8 mb-4">Upcoming Movies</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {upcomingMovies.map((movie, id) => (
+            {upcomingMovies.map((movie, index) => (
               <MovieCard
-                key={id}
+                key={movie.id || index}
                 title={movie.title}
                 image={movie.image}
                 rating={movie.rating}
@@ -124,9 +125,9 @@ export default function Home() {
           </div>
           <button
             onClick={handleLoadMore}
-            className="bg-blue-500 text-white py-2 px-4 rounded mt-4 hover:bg-blue-600"
+            className="bg-black text-white py-2 px-4 rounded mt-4 hover:bg-gray-500 transition"
           >
-            See More
+            See more
           </button>
         </section>
       </main>

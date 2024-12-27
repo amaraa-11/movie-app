@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-blue-700 text-white py-6 mt-8 h-98">
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between ">
         <div className="text-center md:text-left gap-6">
-          <p className="text-2xl font-bold flex items-center gap-2">
+          <p className="text-2xl font-bold flex items-center justify-center gap-2">
             <Film /> Movie Z
           </p>
           <p className="text-sm">&copy; 2024 Movie Z. All rights reserved.</p>
@@ -30,17 +30,15 @@ const Footer = () => {
                   Phone:
                   <a
                     href="tel:+976 8066-7880"
-                    className="mt-1 text-sm hover:underline"
+                    className="mt-2 text-sm hover:underline"
                   >
-                    {" "}
                     <p>+976 8066-7880</p>
                   </a>
                 </span>
-                ``
               </div>
             </div>
 
-            <div className="flex space-x-4 mt-4 md:mt-0 flex-col gap-5 ">
+            <div className="flex space-x-4 mt-4 md:mt-0 flex-col p-2  sm:80 gap-5 ">
               <a href="#" className="text-white hover:text-gray-500 transition">
                 Follow us
               </a>
