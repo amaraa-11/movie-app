@@ -6,15 +6,15 @@ export type MovieCardProps = {
   image: string;
 
   rating: number;
-  date: string;
-  id: string;
+
+  id: number;
 };
 
 const MovieCard: React.FC<MovieCardProps> = ({
   title,
   image,
   rating,
-  date,
+
   id,
 }) => {
   return (
@@ -25,11 +25,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
         <div className="p-4">
           <h2 className="text-lg font-bold">{title}</h2>
           <div className="flex items-center mt-2">
-            <p className="ml-2 ">
-              ⭐️{rating}/10
-              <br />
-              {date}
-            </p>
+            <p className="ml-2 ">⭐️{rating}/10</p>
           </div>
         </div>
       </div>

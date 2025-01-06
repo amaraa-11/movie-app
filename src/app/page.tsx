@@ -16,7 +16,7 @@ const fetchUpcomingMovies = async (page: number = 1) => {
   return data.results.map((movie: any) => ({
     title: movie.title,
     rating: movie.vote_average,
-    date: movie.release_date,
+
     image: movie.poster_path
       ? `${IMAGE_BASE_URL}${movie.poster_path}`
       : "/placeholder.jpg",
@@ -31,7 +31,7 @@ const fetchTopRatedMovies = async () => {
   return data.results.map((movie: any) => ({
     title: movie.title,
     rating: movie.vote_average,
-    date: movie.release_date,
+
     image: movie.poster_path
       ? `${IMAGE_BASE_URL}${movie.poster_path}`
       : "/placeholder.jpg",
@@ -47,7 +47,7 @@ const fetchMoviesByQuery = async (query: string) => {
     id: movie.id,
     rating: movie.vote_average,
     title: movie.title,
-    date: movie.release_date,
+
     image: movie.poster_path
       ? `${IMAGE_BASE_URL}${movie.poster_path}`
       : "/placeholder.jpg",
@@ -104,7 +104,7 @@ export default function Home() {
                 title={movie.title}
                 image={movie.image}
                 rating={movie.rating}
-                date={movie.date}
+                id={movie.id}
               />
             ))}
           </div>
@@ -112,6 +112,7 @@ export default function Home() {
 
         <section>
           <h2 className="text-2xl font-bold mt-8 mb-4">Upcoming Movies</h2>
+
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {upcomingMovies.map((movie, index) => (
               <MovieCard
@@ -119,7 +120,7 @@ export default function Home() {
                 title={movie.title}
                 image={movie.image}
                 rating={movie.rating}
-                date={movie.date}
+                id={movie.id}
               />
             ))}
           </div>
