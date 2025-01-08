@@ -17,7 +17,7 @@ export const MovieCard = ({ movie } : {movie: Movie})=> {
                     <Star size={16} className="stroke-yellow-300 fill-yellow-300 dark:stroke-orange-600" />
                     <p>{movie.vote_average.toFixed(1)}/10</p>
                      </div>
-                     <p className="text-lg ">{movie.title}</p>
+                     <p className="text-lg">{movie.title}</p>
             </div>
         </div>
        </Link>
