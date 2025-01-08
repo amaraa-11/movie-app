@@ -19,26 +19,26 @@ export const Footer = () => {
               <Mail />
               <div>
                 <p>Email:</p>
-                <p>24LP8535@nest.edu.com</p>
-              </div>
+                <a href="https://www.instagram.com/amaraa_pnc/" className="hover:underline">24LP8535@nest.edu.mn</a>
+               </div>
             </div>
             <div className="flex gap-3 items-center" id="phone">
               <Phone />
               <div>
                 <p>Phone:</p>
-                <p>+976 8066-7880</p>
+                <p className="hover:underline">+976 8066-7880</p>
               </div>
             </div>
           </div>
         </div>
  
         <div className="flex flex-col gap-3">
-          <h2 className="font-normal hover:underline">Follow us</h2>
+          <a href="https://pinecone.mn/"  className="font-normal hover:underline">Follow us</a>
           <div className="flex flex-col gap-3 font-medium ">
-            <p className="hover:underline">Facebook</p>
-            <p className="hover:underline">Instagram</p>
-            <p className="hover:underline">Twitter</p>
-            <p className="hover:underline">Youtube</p>
+            <a href="https://www.facebook.com/pinecone.academy.mongolia"   className="hover:underline">Facebook</a>
+            <a href="https://www.instagram.com/pineconemongolia/" className="hover:underline">Instagram</a>
+            <a href="https://x.com/?mx=2" className="hover:underline">Twitter</a>
+            <a href="https://www.youtube.com/@PineconeAcademy" className="hover:underline">Youtube</a>
           </div>
         </div>
       </div>
