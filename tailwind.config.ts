@@ -12,6 +12,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        bgColor: "hsl(var(--bgColor))",
+        textColor: "hsl(var(--textColor))",
       },
     },
   },
